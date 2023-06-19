@@ -1,6 +1,7 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <string>
+#include <QStringList>
 using namespace std;
 class Cliente//: public MAINWINDOW_H
 {
@@ -14,6 +15,7 @@ private:
 
 public:
     Cliente();
+    Cliente(const string &textoCompleto);
 
     string getCedula() const;
     void setCedula(string newCedula);

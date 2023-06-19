@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "cliente.h"
 #include <QMainWindow>
 #include <QMessageBox>
 QT_BEGIN_NAMESPACE
@@ -19,6 +19,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

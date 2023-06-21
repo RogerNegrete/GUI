@@ -105,13 +105,13 @@ bool Cliente::validarCedula() {
     }
 
     // Verificar que los dos primeros dígitos sean válidos (01-24)
-    int provincia = std::stoi(cedula.substr(0, 2));
+    int provincia = stoi(cedula.substr(0, 2));
     if(provincia < 1 || provincia > 24){
         return false;
     }
 
     // Verificar que el tercer dígito sea menor a 6
-    int tipo = std::stoi(cedula.substr(2, 1));
+    int tipo = stoi(cedula.substr(2, 1));
     if(tipo >= 6){
         return false;
     }
@@ -124,7 +124,7 @@ bool Cliente::validarCedula() {
     int digito = 0;
 
     for(int i=0; i<tam-1; i++){
-        digito = std::stoi(cedula.substr(i, 1));
+        digito = stoi(cedula.substr(i, 1));
 
         if(i%2==0){
             digito = digito * 2;
@@ -144,7 +144,7 @@ bool Cliente::validarCedula() {
     }
 
     // Verificar si el último dígito es igual al verificador
-    if(verificador == std::stoi(cedula.substr(tam-1, 1))){
+    if(verificador == stoi(cedula.substr(tam-1, 1))){
         return true;
     }
 

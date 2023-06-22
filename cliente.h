@@ -16,7 +16,7 @@ private:
 public:
     Cliente();
     Cliente(const string &textoCompleto);
-
+    void procesoInformacion(const string &textoCompleto);
     string getCedula() const;
     void setCedula(string newCedula);
     string getName() const;

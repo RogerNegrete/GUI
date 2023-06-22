@@ -7,35 +7,7 @@ Cliente::Cliente()
 }
 
 Cliente::Cliente(const string &textoCompleto) {
-    // Divido textoCompleto en lineas
-    QStringList lineas = QString::fromStdString(textoCompleto).split("\n");
-    //Iterar sobre cada línea
-    for (const QString &linea : lineas) {
-        //Sirve para que el valor que este me tome si esta unido asi ":" oa si ": "
-        //Me separa en 2 campos Nombres y Apellidos
-        QRegExp regExp("[:][ ]?");
-        QStringList campos = linea.split(regExp);
-
-        if (campos.size() == 2) {
-            string label = campos[0].trimmed().toStdString();
-            string value = campos[1].trimmed().toStdString();
-
-            // Es un condicional para que por si acaso me coloque diferente el formulario igual me toma los datos
-            if (label == "Nombre completo") {
-                QStringList nombreCompleto = campos[1].split(" ");
-                setName(nombreCompleto[0].trimmed().toStdString() + " " + nombreCompleto[1].trimmed().toStdString());
-                setLastName(nombreCompleto[2].trimmed().toStdString() + " " + nombreCompleto[3].trimmed().toStdString());
-            } else if (label == "Cédula") {
-                setCedula(value);
-            } else if (label == "Dirección") {
-                setDireccion(value);
-            } else if (label == "Teléfono") {
-                setTelefono(value);
-            } else if (label == "Correo electrónico") {
-                setEmail(value);
-            }
-        }
-    }
+   procesoInformacion(textoCompleto);
 }
 
 
@@ -97,6 +69,37 @@ string Cliente::getEmail() const
 void Cliente::setEmail(const string &newEmail)
 {
     email = newEmail;
+}
+void Cliente::procesoInformacion(const string &textoCompleto) {
+    // Divido textoCompleto en lineas
+    QStringList lineas = QString::fromStdString(textoCompleto).split("\n");
+    //Iterar sobre cada línea
+    for (const QString &linea : lineas) {
+        //Sirve para que el valor que este me tome si esta unido asi ":" oa si ": "
+        //Me separa en 2 campos Nombres y Apellidos
+        QRegExp regExp("[:][ ]?");
+        QStringList campos = linea.split(regExp);
+
+        if (campos.size() == 2) {
+            string label = campos[0].trimmed().toStdString();
+            string value = campos[1].trimmed().toStdString();
+
+            // Es un condicional para que por si acaso me coloque diferente el formulario igual me toma los datos
+            if (label == "Nombre completo") {
+                QStringList nombreCompleto = campos[1].split(" ");
+                setName(nombreCompleto[0].trimmed().toStdString() + " " + nombreCompleto[1].trimmed().toStdString());
+                setLastName(nombreCompleto[2].trimmed().toStdString() + " " + nombreCompleto[3].trimmed().toStdString());
+            } else if (label == "Cédula") {
+                setCedula(value);
+            } else if (label == "Dirección") {
+                setDireccion(value);
+            } else if (label == "Teléfono") {
+                setTelefono(value);
+            } else if (label == "Correo electrónico") {
+                setEmail(value);
+            }
+        }
+    }
 }
 bool Cliente::validarCedula() {
     // Verificar que la cédula tenga 10 dígitos
